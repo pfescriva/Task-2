@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>d3.js data driven page</title>
+        <!--<script src="https://d3js.org/d3.v6.min.js"></script>-->
+        <script src="./d3.v6.min.js"></script>
+      <style>
+      body {
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        line-height: 24px;
+      }
+      h1 {
+        color: #e09654;
+        text-align: center;
+        font-size: 34px;
+        font-family: verdana;
+      }
+    
+      p {font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        line-height: 24px;
+        margin-left: 19px;
+      }
+      input{
+      margin:  10px 40px;
+      }
+      div{
+    margin:  0px 20px;
+      }
+    </style>
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+    </head>
+    
+      <body>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Task 2:  Data Tidying & Reporting </h1>
+        <hr>
+        <br>
+        <p>I'm not sure if we're ment to alter the color of the background or the color of the text. Therefore, I have done the red part for the background, and the blue part for the font</p>
+        <input id="x" type="text"></input>    
+        <button style="color: black;" onclick="addtext()">Run</button>
+        <br>
+        <div>
+        <button class="w3-button w3-black" style="color: red;" onclick="toRed()">Display background in red</button>
+        <button class="w3-button w3-teal" style="color: blue;"onclick="toBlue()">Display text in blue</button>
+        <button class="w3-button w3-red" style="color: black;"onclick="backback()">Undo</button>
+        </div>
+        
+        <script>
+            var x
+            d3.select("input").on("change", function(){
+            x = this.value
+            })
+           
+            function addtext(){
+                d3.select("p")
+                .append("p")
+                .text(x);
+            }
+           
+            function toRed() {
+                d3.selectAll("p").style("background-color", "red");
+            }
+            function backback() {
+                d3.selectAll("p").style("background-color", "white")
+                d3.selectAll("p").style("color", "black");
+            }
+            function toBlue() {
+                d3.selectAll("p").style("color", "blue");
+            }
+        </script>
+       
+       
+    </body>
+<html>
