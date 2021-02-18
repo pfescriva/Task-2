@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+      body {
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        line-height: 24px;
+      }
+      h1 {
+        color: #e09654;
+        text-align: center;
+        font-size: 34px;
+        font-family: verdana;
+      }
+    
+      p {font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        line-height: 24px;
+        margin-left: 19px;
+      }
+      input{
+      margin:  10px 40px;
+      }
+      div{
+    margin:  0px 20px;
+      }
+    </style>
+    </head>
+    
+<body>
+
+        <p style="color:black" >Select:
+            <select id="label-option">
+                <option value="choose">Choose table</option>
+                <option value="table1">Table 1</option>
+                <option value="table2">Table 2</option>
+            </select>
+            <table id="table"></table>
+
+    <body align="center">
+
+       
+        <p>
+        <select onChange= getTable() id="label-option">
+            <option value="choose">Choose table</option>
+            <option value="table1">Table 1</option>
+            <option value="table2">Table 2</option>
+         </select>
+         <br>
+         <br>
+           <table align="center" id="table"></table>            
+        </p>  
+        <script>
+
+
+             csv_url = false ? "data1.csv" : "https://raw.githubusercontent.com/pfescriva/Task-2/main/data1.csv"
+             csv_url2 = false ? "data2.csv" : "https://github.com/pfescriva/Task-2/blob/main/data2.csv"
+
+
+             d3.select("#label-option").on("change", change);
+                function change() {
+                  if (this.selectedIndex == 1){
+             function getTable(){
+                if(document.getElementById('label-option').value=='table1'){
+                    d3.csv(csv_url,
+                    (d,i,c) => {
+                d3.select("table")
+                .append("tr")
+                .selectAll("td")
+                .data(c).enter()
+                .append("td").text(e => d[e])
+             }) //return table 1
+                } else if (this.selectedIndex == 2){
+                            d3.select("table")
+                            .append("tr")
+                            .selectAll("td")
+                            .data(c).join("td").text(e => d[e])
+
+                    })
+                 }
+                else if (document.getElementById('label-option').value=='table2'){
+                    d3.csv(csv_url2,
+             (d,i,c) => {
+                d3.select("table")
+                .append("tr")
+                .selectAll("td")
+                .data(c).enter()
+                .append("td").text(e => d[e])
+             }) //return table 2
+                    (d,i,c) => {
+                            d3.select("table")
+                            .append("tr")
+                            .selectAll("td")
+                            .data(c).join("td").text(e => d[e])
+                    })
+                }
+            }
+
+
+
+
+
+
+</script>
+  </body>
+</html> 
